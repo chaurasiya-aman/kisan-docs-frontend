@@ -1,0 +1,110 @@
+.tips__hero {
+  background: var(--bg-card);
+  border-bottom: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+.tips__hero-title {
+  font-size: clamp(20px, 3vw, 28px);
+  font-weight: 700;
+  letter-spacing: -0.4px;
+  margin-bottom: 8px;
+}
+
+.tips__hero-sub {
+  font-size: 15px;
+  color: var(--text-secondary);
+  margin-bottom: 24px;
+}
+
+.tips__search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  max-width: 500px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+}
+
+.tips__search:focus-within {
+  border-color: var(--green-dark);
+  box-shadow: 0 0 0 3px rgba(46,125,50,0.1);
+}
+
+.tips__search-icon {
+  color: var(--text-muted);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.tips__search-input {
+  border: none;
+  outline: none;
+  font-size: 14.5px;
+  color: var(--text-primary);
+  background: transparent;
+  width: 100%;
+}
+
+.tips__categories {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.tips__category-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.tips__category-btn:hover {
+  border-color: var(--green-light);
+  color: var(--green-dark);
+}
+
+.tips__category-btn--active {
+  background: var(--green-dark);
+  color: #fff;
+  border-color: var(--green-dark);
+}
+
+.tips__count {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-bottom: 20px;
+}
+
+.tips__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.tips__empty {
+  text-align: center;
+  padding: 64px;
+  color: var(--text-muted);
+  font-size: 15px;
+}
+
+@media (max-width: 900px) {
+  .tips__grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .tips__grid { grid-template-columns: 1fr; }
+}

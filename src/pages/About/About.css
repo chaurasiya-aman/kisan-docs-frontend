@@ -1,0 +1,306 @@
+.about__hero {
+  background: linear-gradient(160deg, #f0f7f0 0%, #ffffff 70%);
+  border-bottom: 1px solid var(--border);
+  padding: 64px 0;
+}
+
+.about__hero-inner {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.about__eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--green-dark);
+  background: var(--green-pale);
+  padding: 4px 12px;
+  border-radius: 20px;
+  margin-bottom: 16px;
+}
+
+.about__hero-title {
+  font-size: clamp(24px, 3.5vw, 36px);
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.2;
+  letter-spacing: -0.8px;
+  margin-bottom: 16px;
+}
+
+.about__hero-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.7;
+  max-width: 520px;
+}
+
+.about__hero-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.about__hero-stat {
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px 24px;
+  box-shadow: var(--shadow-sm);
+}
+
+.about__hero-stat-val {
+  font-size: 26px;
+  font-weight: 800;
+  color: var(--green-dark);
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.about__hero-stat-label {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.about__objectives {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about__objective {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.about__objective-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--green-dark);
+  background: var(--green-pale);
+  padding: 4px 8px;
+  border-radius: var(--radius-sm);
+  flex-shrink: 0;
+  font-family: monospace;
+}
+
+.about__objective-line {
+  width: 1px;
+  background: var(--border);
+  flex-shrink: 0;
+  align-self: stretch;
+  margin-top: 8px;
+}
+
+.about__objective-text {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  padding-top: 2px;
+}
+
+.about__tech-section {
+  background: var(--bg-card);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.about__tech-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.about__tech-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 20px;
+}
+
+.about__tech-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--green-pale);
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  color: var(--green-dark);
+  flex-shrink: 0;
+}
+
+.about__tech-name {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+}
+
+.about__tech-detail {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.about__values-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.about__value-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+
+.about__value-icon {
+  font-size: 28px;
+  margin-bottom: 12px;
+}
+
+.about__value-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.about__value-desc {
+  font-size: 13.5px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.about__benefits-section {
+  background: var(--green-pale);
+  border-top: 1px solid #C8E6C9;
+}
+
+.about__benefits-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+
+.about__benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+.about__benefits-list li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14.5px;
+  color: var(--text-secondary);
+}
+
+.about__benefits-list li svg {
+  color: var(--green-dark);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.about__phone {
+  width: 220px;
+  margin: 0 auto;
+  background: #1a1a1a;
+  border-radius: 32px;
+  padding: 16px;
+  box-shadow: var(--shadow-lg);
+}
+
+.about__phone-screen {
+  background: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.about__phone-result {
+  padding: 24px 16px;
+  width: 100%;
+}
+
+.about__phone-label {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.about__phone-disease {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+}
+
+.about__phone-bar-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.about__phone-bar {
+  flex: 1;
+  height: 6px;
+  background: var(--border);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.about__phone-bar div {
+  height: 100%;
+  background: var(--green-dark);
+  border-radius: 3px;
+}
+
+.about__phone-bar-wrap span {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-dark);
+}
+
+.about__phone-action {
+  background: var(--green-pale);
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: 600;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  line-height: 1.4;
+}
+
+@media (max-width: 960px) {
+  .about__hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .about__tech-grid { grid-template-columns: repeat(2, 1fr); }
+  .about__values-grid { grid-template-columns: repeat(2, 1fr); }
+  .about__benefits-inner { grid-template-columns: 1fr; gap: 36px; }
+}
+
+@media (max-width: 560px) {
+  .about__tech-grid { grid-template-columns: 1fr; }
+  .about__values-grid { grid-template-columns: 1fr; }
+}
