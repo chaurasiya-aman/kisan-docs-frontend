@@ -68,7 +68,7 @@ function Voice() {
         }
 
         setConversation(prev => [...prev, botMsg])
-      }, 700)
+      }, 500)
     }
 
     recognition.onerror = () => setListening(false)

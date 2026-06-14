@@ -1,72 +1,77 @@
-import React, { useState, useRef } from 'react'
-import { FaFlask, FaLeaf, FaImage } from 'react-icons/fa'
-import UploadBox from '../../components/UploadBox/UploadBox.jsx'
-import DiseaseCard from '../../components/DiseaseCard/DiseaseCard.jsx'
-import Loader from '../../components/Loader/Loader.jsx'
-import Button from '../../components/Button/Button.jsx'
-import './Detection.css'
+import React, { useState, useRef } from "react";
+import { FaFlask, FaLeaf, FaImage } from "react-icons/fa";
+import UploadBox from "../../components/UploadBox/UploadBox.jsx";
+import DiseaseCard from "../../components/DiseaseCard/DiseaseCard.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
+import Button from "../../components/Button/Button.jsx";
+import "./Detection.css";
 
 const sampleImages = [
-  { id: 1, label: 'Tomato — Early Blight', emoji: '🍅' },
-  { id: 2, label: 'Wheat — Leaf Rust', emoji: '🌾' },
-  { id: 3, label: 'Rice — Brown Spot', emoji: '🍚' },
-]
+  { id: 1, label: "Tomato — Early Blight", emoji: "🍅" },
+  { id: 2, label: "Wheat — Leaf Rust", emoji: "🌾" },
+  { id: 3, label: "Rice — Brown Spot", emoji: "🍚" },
+];
 
 function Detection() {
-  const [selectedFile, setSelectedFile] = useState(null)
-  const [loading, setLoading] = useState(false)
-  const [result, setResult] = useState(null)
-  const [error, setError] = useState(null)
-  const [selectedSample, setSelectedSample] = useState(null)
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [result, setResult] = useState(null);
+  const [error, setError] = useState(null);
+  const [selectedSample, setSelectedSample] = useState(null);
 
   const handleImageSelect = (file) => {
-    setSelectedFile(file)
-    setResult(null)
-    setError(null)
-    setSelectedSample(null)
-  }
+    setSelectedFile(file);
+    setResult(null);
+    setError(null);
+    setSelectedSample(null);
+  };
 
   const handleAnalyse = async () => {
-    if (!selectedFile) return
-    setLoading(true)
-    setResult(null)
-    setError(null)
+    if (!selectedFile) return;
+    setLoading(true);
+    setResult(null);
+    setError(null);
 
     try {
-      const formData = new FormData()
-      formData.append('file', selectedFile)
+      const formData = new FormData();
+      formData.append("file", selectedFile);
 
-      const res = await fetch('/api/predict', {
-        method: 'POST',
-        body: formData,
-      })
-
+      const res = await fetch(
+        `${import.meta.env.VITE_BACKEND_URL}/api/predict`,
+        {
+          method: "POST",
+          body: formData,
+        },
+      );
       if (!res.ok) {
-        const err = await res.json().catch(() => ({}))
-        throw new Error(err.detail || `Server error: ${res.status}`)
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.detail || `Server error: ${res.status}`);
       }
 
-      const data = await res.json()
-      setResult(data)
+      const data = await res.json();
+      setResult(data);
     } catch (err) {
-      setError(err.message || 'Something went wrong. Please try again.')
+      setError(err.message || "Something went wrong. Please try again.");
     } finally {
-      setLoading(false)
+      setLoading(false);
     }
-  }
+  };
 
   const handleSample = (sample) => {
-    setSelectedSample(sample)
-    setResult(null)
-    setError(null)
-  }
+    setSelectedSample(sample);
+    setResult(null);
+    setError(null);
+  };
 
   return (
     <div className="page-wrapper">
       <div className="detection__hero">
         <div className="container">
           <h1 className="detection__hero-title">Plant Disease Detection</h1>
-          <p className="detection__hero-subtitle">Upload a clear photo of the affected leaf. Avoid shadows — good daylight gives the best results.</p>
+          <p className="detection__hero-subtitle">
+            Upload a clear photo of the affected leaf. Avoid shadows — good
+            daylight gives the best results.
+          </p>
         </div>
       </div>
 
@@ -74,16 +79,20 @@ function Detection() {
         <div className="container detection__layout">
           <div className="detection__left">
             <div className="detection__panel">
-              <h2 className="detection__panel-title"><FaImage /> Upload Leaf Photo</h2>
+              <h2 className="detection__panel-title">
+                <FaImage /> Upload Leaf Photo
+              </h2>
               <UploadBox onImageSelect={handleImageSelect} />
 
               <div className="detection__sample-section">
-                <p className="detection__sample-label">No photo? Try a sample:</p>
+                <p className="detection__sample-label">
+                  No photo? Try a sample:
+                </p>
                 <div className="detection__samples">
-                  {sampleImages.map(s => (
+                  {sampleImages.map((s) => (
                     <button
                       key={s.id}
-                      className={`detection__sample-btn${selectedSample?.id === s.id ? ' detection__sample-btn--active' : ''}`}
+                      className={`detection__sample-btn${selectedSample?.id === s.id ? " detection__sample-btn--active" : ""}`}
                       onClick={() => handleSample(s)}
                       type="button"
                     >
@@ -106,7 +115,7 @@ function Detection() {
                 onClick={handleAnalyse}
                 disabled={!selectedFile || loading}
               >
-                {loading ? 'Analysing...' : 'Analyse Leaf'}
+                {loading ? "Analysing..." : "Analyse Leaf"}
               </Button>
             </div>
 
@@ -124,9 +133,14 @@ function Detection() {
           <div className="detection__right">
             {!loading && !result && !error && (
               <div className="detection__placeholder">
-                <div className="detection__placeholder-icon"><FaLeaf /></div>
+                <div className="detection__placeholder-icon">
+                  <FaLeaf />
+                </div>
                 <h3>No analysis yet</h3>
-                <p>Upload a leaf photo and tap "Analyse Leaf" to get the disease report.</p>
+                <p>
+                  Upload a leaf photo and tap "Analyse Leaf" to get the disease
+                  report.
+                </p>
               </div>
             )}
 
@@ -134,16 +148,23 @@ function Detection() {
 
             {error && !loading && (
               <div className="detection__placeholder">
-                <div className="detection__placeholder-icon" style={{ color: '#e53e3e' }}>⚠️</div>
+                <div
+                  className="detection__placeholder-icon"
+                  style={{ color: "#e53e3e" }}
+                >
+                  ⚠️
+                </div>
                 <h3>Analysis failed</h3>
-                <p style={{ color: '#e53e3e' }}>{error}</p>
+                <p style={{ color: "#e53e3e" }}>{error}</p>
               </div>
             )}
 
             {result && !loading && (
               <div className="detection__result">
                 <div className="detection__result-header">
-                  <span className="detection__result-badge">Analysis Complete</span>
+                  <span className="detection__result-badge">
+                    Analysis Complete
+                  </span>
                 </div>
                 <DiseaseCard disease={result} />
                 <div className="detection__actions">
@@ -156,7 +177,7 @@ function Detection() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Detection
+export default Detection;

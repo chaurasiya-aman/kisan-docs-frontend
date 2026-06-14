@@ -21,7 +21,7 @@ const riskColors = {
 
 function getDiseaseRisks(weather) {
   if (!weather) return [];
-  const { temperature, humidity, rainfall } = weather;
+  const { temperature=0, humidity=0, rainfall=0 } = weather;
 
   return [
     {
