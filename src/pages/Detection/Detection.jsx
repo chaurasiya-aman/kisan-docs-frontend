@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { FaFlask, FaLeaf, FaImage } from "react-icons/fa";
+import axios from "axios";
 import UploadBox from "../../components/UploadBox/UploadBox.jsx";
 import DiseaseCard from "../../components/DiseaseCard/DiseaseCard.jsx";
 import Loader from "../../components/Loader/Loader.jsx";
@@ -36,22 +37,18 @@ function Detection() {
       const formData = new FormData();
       formData.append("file", selectedFile);
 
-      const res = await fetch(
+      const res = await axios.post(
         `${import.meta.env.VITE_BACKEND_URL}/api/predict`,
-        {
-          method: "POST",
-          body: formData,
-        },
+        formData
       );
-      if (!res.ok) {
-        const err = await res.json().catch(() => ({}));
-        throw new Error(err.detail || `Server error: ${res.status}`);
-      }
 
-      const data = await res.json();
-      setResult(data);
+      setResult(res.data);
     } catch (err) {
-      setError(err.message || "Something went wrong. Please try again.");
+      const message =
+        err.response?.data?.detail ||
+        err.message ||
+        "Something went wrong. Please try again.";
+      setError(message);
     } finally {
       setLoading(false);
     }
